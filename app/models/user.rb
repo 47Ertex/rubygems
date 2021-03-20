@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable, :confirmable 
   def to_s
     email
-  end  
+  end
+  
+  def username
+      self.email.split(/@/).first
+  end
   has_many :courses
 end
