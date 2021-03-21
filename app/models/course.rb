@@ -18,5 +18,8 @@ class Course < ApplicationRecord
         LEVELS = [:'Beginner', :'Intermediate', :'Advanced']
     def self.levels
         LEVELS.map{|level|[level, level]}
-    end 
+    end
+    
+    include PublicActivity::Model
+    tracked owner: Proc.new{|controller, model| controller.current_user}
 end
