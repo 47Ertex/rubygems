@@ -1,21 +1,22 @@
 %hr
 %footer
     .container
-        .row
-            .col-md-4
-                Copyright
-                =Time.now.year
-                CoursePlatform Sp. z o.o.
-                .row
-                .fa.fa-envelope
-                =mail_to 'ertex@exa.com'
-                .row
-            .col-md-4
-                Privicy policy
-                .row
-                Terms and conditions
-            .col-md-4
-                About us
-                .row
-                =link_to 'Teach on EDURGE', new_course_path
+        %font{:color => "white"}
+            .row
+                .col-md-4
+                    Copyright
+                    =Time.now.year
+                    CoursePlatform Sp. z o.o.
+                    .row
+                    .fa.fa-envelope
+                    =mail_to 'ertex@exa.com'
+                    .row
+                .col-md-4
+                    Privicy policy
+                    .row
+                    Terms and conditions
+                .col-md-4
+                    About us
+                    .row
+                    =link_to 'Teach on EDURGE', new_course_path
 %br                
