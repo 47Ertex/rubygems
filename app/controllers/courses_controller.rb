@@ -10,8 +10,8 @@ class CoursesController < ApplicationController
       #@q = Course.ransack(params[:q])
       #@courses = @q.result.includes(:user)
     #end
-      @ransack_courses=Course.ransack(params[:courses_search], search_key: :courses_search)
-      @courses = @ransack_courses.result.includes(:user)
+    @ransack_courses=Course.ransack(params[:courses_search], search_key: :courses_search)
+    @courses = @ransack_courses.result.includes(:user)
   end
   
   # GET /courses/1 or /courses/1.json
