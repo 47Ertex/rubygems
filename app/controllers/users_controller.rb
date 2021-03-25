@@ -5,6 +5,8 @@ class UsersController < ApplicationController
         @q = User.ransack(params[:q])
         @users = @q.result(distinct: true)
     end
+    def show
+    end    
     
     def edit
         authorize @user
