@@ -1,17 +1,17 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-
-  # Code is not reloaded between requests.
-  config.cache_classes = true
   
   Rails.application.config.middleware.use ExceptionNotification::Rack,
   email: {
     deliver_with: :deliver, # Rails >= 4.2.1 do not need this option since it defaults to :deliver_now
     email_prefix: '[PREFIX] ',
     sender_address: %{"ertex47project error" <support@etx-rubygems.herokuapp.com>},
-    exception_recipients: %w{ilan138@mail.ru}
+    exception_recipients: %w{ertex47@gmaill.com}
   }
-
+  
+  # Code is not reloaded between requests.
+  config.cache_classes = true
+  
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
