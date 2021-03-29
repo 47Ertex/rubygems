@@ -11,7 +11,7 @@ class Enrollment < ApplicationRecord
   
     
   def to_s
-    user
+    user.to_s + " " + course.to_s
   end  
   
   protected
