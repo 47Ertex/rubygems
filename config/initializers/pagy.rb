@@ -116,7 +116,7 @@ require 'pagy/extras/bootstrap'
 
 # Instance variables
 # See https://ddnexus.github.io/pagy/api/pagy#instance-variables
-Pagy::VARS[:items] = 3                                  # default
+Pagy::VARS[:items] = 10                                  # default
 
 
 # Other Variables
