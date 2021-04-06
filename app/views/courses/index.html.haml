@@ -1,11 +1,13 @@
 - content_for :title do
   Ertex47Project
   \|
-  All courses
+  =action_name.humanize
+  courses
 
 %h3 
   .text-center
-    Courses
+    =action_name.humanize
+    courses
     .badge.badge-info
       =@courses.count
 %p
