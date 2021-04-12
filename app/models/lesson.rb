@@ -1,7 +1,7 @@
 class Lesson < ApplicationRecord
   belongs_to :course, counter_cache: true
   
-  has_many :user_lessons
+  has_many :user_lessons, dependent: :destroy
   #Course.find_each { |course| Course.reset_counters(course.id, :lessons) }
   validates :title, :content, :course,  presence: true
   has_rich_text :content
