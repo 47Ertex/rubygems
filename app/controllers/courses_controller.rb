@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:show] 
   before_action :set_course, only: %i[ show edit update destroy approve unapprove ]
 
   # GET /courses or /courses.json
@@ -42,8 +43,9 @@ class CoursesController < ApplicationController
     @pagy,@courses = pagy(@ransack_courses.result.includes(:user))
     render 'index'
   end  
-  # GET /courses/1 or /courses/1.json
+  
   def show
+    authorize @course
     @lessons=@course.lessons
     @enrollments_with_review=@course.enrollments.reviewed
   end

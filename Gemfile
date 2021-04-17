@@ -63,3 +63,4 @@ gem 'exception_notification'
 gem 'pagy'
 gem "chartkick"
 gem 'groupdate'
+gem 'rails-erd', group: :development #sudo apt-get install graphviz; bundle exec erd  ПРИ ОШИБКАХ ПРОБУЙsudo apt-get -f install
