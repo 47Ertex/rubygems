@@ -1,16 +1,18 @@
 - content_for :title do
     Ertex47Project
-    \/
+    \|
     Course
     =@course.title
     \|
     New lesson
 
 = link_to 'Courses', courses_path
-\/
-= link_to @course.title, course_path(@course)
-\/
-New
+\|
+= link_to course_path(@course) do
+    .fa.fa-graduation-cap
+    =@course.title
+\|
+New lesson
 %p
 .card
     .card-header
