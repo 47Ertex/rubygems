@@ -20,11 +20,11 @@ class Lesson < ApplicationRecord
   end
   
   def prev
-    course.lessons.where('row_order < ?', row_order).order(:row_order).last
+    course.lessons.where("row_order < ?", row_order).order(:row_order).last
   end  
   
   def next
-    course.lessons.where('row_order > ?', row_order).order(:row_order).first
+    course.lessons.where("row_order > ?", row_order).order(:row_order).first
   end 
   
   def viewed(user)
