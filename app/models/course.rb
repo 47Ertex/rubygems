@@ -18,6 +18,8 @@ class Course < ApplicationRecord
     scope :unpublished, -> { where(published: false) }
     scope :unapproved, -> { where(approved: false) }
     
+    has_one_attached :avatar
+    
     def to_s
         title
     end
