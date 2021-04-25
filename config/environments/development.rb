@@ -1,6 +1,6 @@
 Rails.application.configure do
-  config.hosts << "https://ertex47-app.herokuapp.com"
-  config.action_mailer.default_url_options = { host: 'https://ertex47-app.herokuapp.com'}
+  config.hosts << "ertex47-app.herokuapp.com"
+  config.action_mailer.default_url_options = { host: 'ertex47-app.herokuapp.com'}
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
