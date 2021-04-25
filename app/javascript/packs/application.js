@@ -27,6 +27,8 @@ require("chartkick/chart.js")
 require("jquery")
 require("jquery-ui-dist/jquery-ui");
 
+import "../trix-editor-overrides"
+
 $(document).on('turbolinks:load', function(){
   $('.lesson-sortable').sortable({
     cursor: "grabbing",
