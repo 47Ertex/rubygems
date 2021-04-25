@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     resources :enrollments, only: [:new, :create]
     resources :lessons do
       put :sort
+      member do
+        delete :delete_video
+      end
     end  
   end    
   resources :users, only: [:index, :edit, :show, :update]
