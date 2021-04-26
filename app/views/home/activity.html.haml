@@ -13,16 +13,21 @@
   -@activities.each do |activity|
     %li.list-group-item
       /= activity.id
-      = activity.created_at.strftime('%d-%m-%M %H-:%m')
+      = activity.created_at.strftime('%d-%m-%Y %H:%m')
       (#{time_ago_in_words(activity.created_at)})
       = model_label(activity.trackable_type)
       = activity.trackable_type
       /= activity.trackable_id
       - if activity.trackable_type=="Lesson"
-        - if Lesson.where(id:activity.trackable_id).present?
+        - if Lesson.where(id:activity.trackable_id).any?
           = link_to activity.trackable, course_lesson_path(activity.trackable.course, activity.trackable)
         - else
           Lesson was deleted
+      - elsif activity.trackable_type =="Comment"
+        - if Comment.where(id: activity.trackable_id).any?
+          = link_to activity.trackable.content, course_lesson_path(activity.trackable.lesson.course, activity.trackable.lesson)
+        - else
+          Comment was deleted  
       - else  
         = link_to activity.trackable, activity.trackable
       = activity.key
