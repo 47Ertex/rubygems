@@ -25,7 +25,10 @@ Rails.application.routes.draw do
         delete :delete_video
       end
     end  
-  end    
+  end 
+  
+  resources :youtube, only: :show
+  
   resources :users, only: [:index, :edit, :show, :update]
  
   namespace :charts do

@@ -17,7 +17,9 @@ module Ruygems
       end
     end
     
-  
+    config.to_prepare do
+      ActionText::ContentHelper.allowed_tags << "iframe"
+    end
     
     config.after_initialize do
       #ActionText::ContentHelper.allowed_attributes << "style"

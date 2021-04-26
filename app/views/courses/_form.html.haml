@@ -20,15 +20,18 @@
     /%small=f.error :avatar, class: 'text-danger'
     = f.input :avatar
     .row
-    = f.label :description
-    = f.rich_text_area :description
-    %small=f.error :description, class: 'text-danger'
+    /= f.label :description
+    /= f.rich_text_area :description
+    /%small=f.error :description, class: 'text-danger'
+    
+    = f.input :description, as: :rich_text_area
+    
     =f.input :short_description
     /=f.input :language, collection: [ "English", "Polish", "Russian"]
-    =f.input :language, collection: Course.languages, include_blank: true
-    =f.input :level, collection: Course.levels, include_blank: true
+    =f.input :language, collection: Course.languages, include_blank: true, as: :radio_buttons
+    =f.input :level, collection: Course.levels, include_blank: true, as: :radio_buttons
     /=f.input :level, collection: [ "Beginner", "Intermediate", "Advanced"]
-    =f.input :price
+    =f.input :price, collection: [0, 1, 5, 10, 19, 30, 77, 100], as: :radio_buttons
     =f.input :published
 
   .form-actions
