@@ -19,7 +19,8 @@ Rails.application.routes.draw do
       patch :unapprove
     end  
     resources :enrollments, only: [:new, :create]
-    resources :lessons do
+    resources :lessons, except: [:index] do
+      resources :comments, except: [:index]
       put :sort
       member do
         delete :delete_video
