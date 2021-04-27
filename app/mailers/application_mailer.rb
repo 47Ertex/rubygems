@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'ertex47-app.herokuapp.com'
+  default from: 'ertex-app.herokuapp.com'
   layout 'mailer'
 end
