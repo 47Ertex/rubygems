@@ -1,4 +1,8 @@
-//body {background:#f8f0e6;}
+body { background: #2f4352; color: #e9ede6}
+.card, .jumbotron, .list-group-item { color: #3f3147;}
+
+
+//hide simple_form checkmarks
 .form-control.is-invalid{background-image: none;}
 .form-control.is-valid{background-image: none;}
 
@@ -6,5 +10,5 @@
  
  //simple_form input for rich_text_area
  trix-editor.form-control {
-    height:auto;
+  height:auto;
  }
