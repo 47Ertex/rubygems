@@ -18,8 +18,8 @@
       #{lesson.row_order_rank + 1}.
     = lesson.title
 .float-right
-  .fa.fa-comment
-  = lesson.comments_count
+  /.fa.fa-comment
+  /= lesson.comments_count
   - if policy(lesson).edit?
     .far.fa-eye
     Impressions:
