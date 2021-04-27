@@ -29,9 +29,6 @@ require("jquery-ui-dist/jquery-ui");
 
 import "../trix-editor-overrides"
 
-import videojs from 'video.js'
-import 'video.js/dist/video-js.css'
-
 import "youtube"
 
 $(document).on('turbolinks:load', function(){
@@ -56,17 +53,8 @@ $(document).on('turbolinks:load', function(){
     }
   });
   
-  let videoPlayer = videojs(document.getElementById('my-video'), {
-    controls: true,
-    playbackRates: [0.5, 1, 1.5],
-    autoplay: false,
-    fluid: true,
-    preload: false,
-    liveui: true,
-    responsive: true,
-    loop: false
-
-  })
-  videoPlayer.addClass('video-js')
-  videoPlayer.addClass('vjs-big-play-centered')
+  $("video").bind("contextmenu", function(){
+    return false;
+  });
+  
 });
