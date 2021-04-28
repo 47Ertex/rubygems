@@ -1,6 +1,8 @@
 body { background: #2f4352; color: #e9ede6}
 .card, .jumbotron, .list-group-item { color: #3f3147;}
 
+th{background-color: orange}
+td{background-color: yellow}
 
 //hide simple_form checkmarks
 .form-control.is-invalid{background-image: none;}
@@ -11,4 +13,21 @@ body { background: #2f4352; color: #e9ede6}
  //simple_form input for rich_text_area
  trix-editor.form-control {
   height:auto;
+ }
+ 
+ //footer always on the bottom
+ html {
+  position: relative;
+  min-height: 100%;
+ }
+ body {
+  margin: 0 0 200px;
+ }
+ .footer {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   //height: 200px;
+   width: 100%;
+   overflow: hidden;
  }
