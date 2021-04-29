@@ -53,7 +53,7 @@ end
 gem "haml-rails", "~> 2.0"
 gem "simple_form"
 gem "faker"
-gem "devise"
+#gem "devise"
 gem 'friendly_id', '~> 5.4.0'
 gem 'ransack'
 gem 'public_activity'
@@ -70,3 +70,6 @@ gem 'active_storage_validations'
 gem 'image_processing'
 gem "recaptcha"
 gem 'omniauth-google-oauth2'
+gem "devise", github: "heartcombo/devise", branch: "master"
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'

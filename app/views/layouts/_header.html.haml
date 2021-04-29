@@ -127,13 +127,17 @@
               .fa.fa-cog
               %b Account settings
             =link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do
-              .fa.fa-sigh-out-alt
+              .fa.fa-sign-out-alt
               %b Sign out
   
     -else
       %ul.navbar-nav.mr-auto
       %ul.navbar-nav.mr-right
-        %ul.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_registration_path)}"}
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_registration_path)}"}
           =link_to 'Sign Up', new_user_registration_path, class: 'nav-link'
-        %ul.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_session_path)}"}
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(new_user_session_path)}"}
           =link_to 'Log In', new_user_session_path, class: 'nav-link'
+        %li.nav-item{class: "#{'active font-weight-bold' if current_page?(user_google_oauth2_omniauth_authorize_path)}"}  
+          = link_to  user_google_oauth2_omniauth_authorize_path, method: :post, class: 'nav-link' do
+            .fab.fa-google
+            Sign in with Google
