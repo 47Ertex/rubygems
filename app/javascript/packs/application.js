@@ -24,6 +24,8 @@ require("@rails/actiontext")
 
 require("chartkick/chart.js")
 
+require("selectize")
+
 require("jquery")
 require("jquery-ui-dist/jquery-ui");
 
@@ -56,5 +58,11 @@ $(document).on('turbolinks:load', function(){
   $("video").bind("contextmenu", function(){
     return false;
   });
-  
+
+  if ($('.selectize')){
+      $('.selectize').selectize({
+          sortField: 'text'
+    });
+  }
+    
 });

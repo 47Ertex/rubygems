@@ -4,13 +4,16 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :title
+    = f.input :title, input_html: {autocomplete: 'off'}
+    
+    = f.select :tag_ids, @tags.all.pluck(:name, :id), {}, { multiple: true, class: "selectize"}
     /= f.label :avatar
     .row
     -if @course.avatar.attached?
       =image_tag @course.avatar, width: "200px"
       /=@course.avatar.content_type
       /=@course.avatar.key
+      .row
       =@course.avatar.filename
       /=@course.avatar.metadata
       /=@course.avatar.byte_size
