@@ -1,10 +1,18 @@
 @import "selectize/dist/css/selectize";
 @import "selectize/dist/css/selectize.default";
 
-body { background: #2f4352; color: #e9ede6}
+body { background: #1f2422; color: #e9ede6}
 .card, .jumbotron, .list-group-item { color: #3f3147;}
 
 hr{color: white}
+
+.btn_link:link, .btn_link:visited, .btn_link:focus{color: white;}
+
+.black_link:link, .black_link:visited, .black_link:focus{color: black; background: none;}
+
+/* Config hyperlinks Pseudo-class */
+//a:link, a:visited, a:focus {color: black;}
+.white_link:link, .white_link:visited, .white_link:focus{color: white; background: none;}
 
 th{background-color: #73787d}
 td{background-color: #7f8a94}
@@ -36,3 +44,4 @@ td{background-color: #7f8a94}
    width: 100%;
    overflow: hidden;
  }
+ 

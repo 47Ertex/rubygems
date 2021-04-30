@@ -10,7 +10,7 @@
     .fab.fa-google
     Sign in with Google
 %br
-- if @user.uid.present?
-    = image_tag @user.image, size: '40x40', alt: "#{@user.email}", class: 'rounded-circle'
-    .row
-    = @user.name
+/- if @user.uid.present?
+/    = image_tag @user.image, size: '40x40', alt: "#{@user.email}", class: 'rounded-circle'
+/    .row
+/    = @user.name
