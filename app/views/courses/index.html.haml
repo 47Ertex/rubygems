@@ -41,14 +41,14 @@
         .row
         =sort_link(@ransack_courses, :price)
         .row
-        =sort_link(@ransack_courses, :average_rating, "Top Rated")
+        =sort_link(@ransack_courses, :average_rating, "Top Rated", class: "white_link")
         .row
         =sort_link(@ransack_courses, :enrollments_count, "Most Popular")
         .row
         =sort_link(@ransack_courses, :created_at, "Fresh")
         .row
         =f.submit
-      =link_to 'refresh', @ransack_path
+      =link_to 'refresh', @ransack_path, class: "white_link"
       .row
       - @tags.each do |tag|
         = link_to controller: controller_name, action: action_name, courses_search: {course_tags_tag_id_eq: tag.id} do
