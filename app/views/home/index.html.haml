@@ -7,93 +7,116 @@
   .display-4
     What do you want to learn today?
   
-  .p-4
-  -if current_user
-    =search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
+    .p-4
+  - if current_user
+    = search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group
-        =f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', autocomplete: 'off'
+      = f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 150px; ', placeholder: 'Find a course', autocomplete: 'off'
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
+    /.p-2
+    /- else
+    /%h3.text-shadow Join to access all the courses
+    /.p-2
+    /= link_to 'Register', new_user_registration_path, class: 'btn btn-info btn-lg'
+    /= link_to 'Login', new_user_session_path, class: 'btn btn-info btn-lg'  
+    /.row.mt-1
+    /= link_to user_google_oauth2_omniauth_autorize_path, class: 'btn btn-dark btn-lg mr-1' do
+    /  Continue with
+    /  .fab.fa-google
+    /.row.mt-1
+    /= link_to user_github_omniauth_autorize_path, class: 'btn btn-dark btn-lg mr-1' do
+    /  Continue with
+    /  .fab.fa-github 
+    /  .row.mt-1
+    /= link_to user_facebook_omniauth_autorize_path, class: 'btn btn-primary btn-lg mr-1' do
+    /  Continue with
+    /  .fab.fa-facebook    
 
-  /.form-inline.my-2.my-lg-0
-  /  =form_tag(root_path, method: :get) do
-  /    .input-group
-  /      =text_field_tag :title, params[:title], autocomplete: 'off', placeholder: 'Find a course', class: 'form-control-sm'
-  /      %span.input-group-append
-  /        %button.btn.btn-primary.btn-sm{:type => "submit"}
-  /          %span.fa.fa-search{"aria-hidden" => "true"}
-            
-.card-group
-  .card.card-body
-    %h1
-      .fa.fa-graduation-cap
-    = Course.count
-    online courses
-    .row
-    Explore a variety of fresh topics
-  .card.card-body
-    %h1
-      .fa.fa-chalkboard-teacher
-      /.fa.fa-brain
-    = Course.distinct.count(:user_id)
-    expert instructors
-    .row
-    Find the right instructor for you
-  .card.card-body
-    %h1
+.card-group.shadow
+  .card
+    .card-body
+      %h1
+        .fa.fa-graduation-cap
+      = Course.count
+      online courses
+      .row
+      Explore a variety of fresh topics
+    .card.card-body
+      %h1
+        .fa.fa-chalkboard-teacher
+        /.fa.fa-brain
+      = Course.distinct.count(:user_id)
+      expert instructors
+      .row
+      Find the right instructor for you
+    .card.card-body
+      %h1
+        .fa.fa-user-graduate
+      = User.count
+      active learners
+      .row
+      Join the knowledge sharing community
+    .card.card-body
+      %h1
+        .fa.fa-infinity
+      Lifetime access
+      .row
+      Learn on your schedule
+    %p
+  - if current_user
+    %h2
       .fa.fa-user-graduate
-    = User.count
-    active learners
-    .row
-    Join the knowledge sharing community
-  .card.card-body
-    %h1
-      .fa.fa-infinity
-    Lifetime access
-    .row
-    Learn on your schedule
-%p
-- if current_user
-  %h2
-    .fa.fa-user-graduate
-    Continue Learning
-  .card-columns
-    - @purchased_courses.each do |course|
-      = render 'courses/course', course: course
-  .text-right
-    = link_to 'All my purchased courses', purchased_courses_path
-  %hr
-%h2
-  .fa.fa-chart-line
-  Popular courses
-.card-columns
-  - @popular.each do |course|
-    = render 'courses/course', course: course 
-.text-right
-  = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollments_count desc'})    
-%hr
-%h2
-  .fa.fa-star
-  Top rated courses
-.card-columns
-  - @top_rated.each do |course|
-    = render 'courses/course', course: course 
-.text-right
-  = link_to 'Best rated courses', courses_path(courses_search: {s: 'average_rating desc'})     
-%hr
-%h2
-  .far.fa-clock
-  Latest courses
-.card-columns
-  - @latest.each do |course|
-    = render 'courses/course', course: course
-.text-right
-  = link_to 'More new courses', courses_path(courses_search: {s: 'created_at desc'})         
-%hr
-%h2
-  .far.fa-comment
-  What our students have to say
-.card-columns
-  - @latest_goot_reviews.each do |enrollment|
-    = render 'enrollments/enrollment', enrollment: enrollment
+      Continue Learning
+    .card-columns
+      - @purchased_courses.each do |course|
+        = render 'courses/course', course: course
+    .text-right
+      = link_to 'All my purchased courses', purchased_courses_path
+    %hr
+    %h2
+      .fa.fa-chart-line
+      Popular courses
+    .card-columns
+      - @popular.each do |course|
+        = render 'courses/course', course: course 
+    .text-right
+      = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollments_count desc'})    
+    %hr
+    %h2
+      .fa.fa-star
+      Top rated courses
+    .card-columns
+      - @top_rated.each do |course|
+        = render 'courses/course', course: course 
+    .text-right
+      = link_to 'Best rated courses', courses_path(courses_search: {s: 'average_rating desc'})     
+    %hr
+    %h2
+      .far.fa-clock
+      Latest courses
+    .card-columns
+      - @latest.each do |course|
+        = render 'courses/course', course: course
+    .text-right
+      = link_to 'More new courses', courses_path(courses_search: {s: 'created_at desc'})   
+    
+    %hr
+    %h2
+      .fa.fa-tags
+      Most popular tags
+    - @popular_tags.each do |tag|
+      = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+        .badge.badge-info
+          %h4    
+            = tag.name
+            = tag.course_tags_count
+        
+    %hr
+    %h2
+      .far.fa-comment
+      What our students have to say
+    .card-columns
+      - @latest_goot_reviews.each do |enrollment|
+        = render 'enrollments/enrollment', enrollment: enrollment
