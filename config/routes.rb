@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end  
   
   resources :tags, only: [:create, :index, :destroy]
-  
   resources :courses do
     get :purchased, :pending_review, :created, :unapproved, on: :collection
     member do
@@ -22,14 +21,15 @@ Rails.application.routes.draw do
       patch :approve
       patch :unapprove
     end  
-    resources :enrollments, only: [:new, :create]
     resources :lessons, except: [:index] do
       resources :comments, except: [:index]
       put :sort
       member do
         delete :delete_video
       end
-    end  
+    end
+    resources :enrollments, only: [:new, :create]
+    resources :course_wizard, controller: 'courses/course_wizard'  
   end 
   
   resources :youtube, only: :show
