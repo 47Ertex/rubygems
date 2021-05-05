@@ -37,14 +37,14 @@
             
 .card-group
   .card.card-body
-    %h1
+    %h2
       .fa.fa-graduation-cap
     = Course.count
     online courses
     .row
     Explore a variety of fresh topics
   .card.card-body
-    %h1
+    %h2
       .fa.fa-chalkboard-teacher
       /.fa.fa-brain
     = Course.distinct.count(:user_id)
@@ -52,14 +52,14 @@
     .row
     Find the right instructor for you
   .card.card-body
-    %h1
+    %h2
       .fa.fa-user-graduate
     = User.count
     active learners
     .row
     Join the knowledge sharing community
   .card.card-body
-    %h1
+    %h2
       .fa.fa-infinity
     Lifetime access
     .row
