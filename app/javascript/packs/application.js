@@ -25,6 +25,7 @@ require("@rails/actiontext")
 require("chartkick/chart.js")
 
 require("selectize")
+import "cocoon-js";
 
 require("jquery")
 require("jquery-ui-dist/jquery-ui");

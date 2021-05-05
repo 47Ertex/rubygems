@@ -65,7 +65,7 @@
     .row
     Learn on your schedule
 %p
-- if current_user
+- if current_user.courses.any?
   %h2
     .fa.fa-user-graduate
     Continue Learning
@@ -75,6 +75,16 @@
   .text-right
     = link_to 'All my purchased courses', purchased_courses_path, class: 'white_link'
   %hr
+%h2
+  .fa.fa-tags
+  Most popular tags
+- @popular_tags.each do |tag|
+  = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
+    .badge.badge-info
+      %h4
+        = tag.name
+        = tag.course_tags_count
+%hr        
 %h2
   .fa.fa-chart-line
   Popular courses
@@ -100,7 +110,7 @@
   - @latest.each do |course|
     = render 'courses/course', course: course
 .text-right
-  = link_to 'More new courses', courses_path(courses_search: {s: 'created_at desc'}), class: 'white_link'         
+  = link_to 'More new courses', courses_path(courses_search: {s: 'created_at desc'}), class: 'white_link'  
 %hr
 %h2
   .far.fa-comment

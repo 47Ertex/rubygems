@@ -77,3 +77,4 @@ gem 'omniauth-facebook'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'wicked' #multisteps forms
+gem "cocoon"
