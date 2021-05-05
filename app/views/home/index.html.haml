@@ -65,7 +65,7 @@
     .row
     Learn on your schedule
 %p
-- if current_user.courses.any?
+- if current_user.enrollments.any?
   %h2
     .fa.fa-user-graduate
     Continue Learning
