@@ -14,7 +14,7 @@ class Course < ApplicationRecord
     accepts_nested_attributes_for :lessons, reject_if: :all_blank, allow_destroy: true
     
     validates :title, uniqueness: true, length: { :maximum => 70 }
-    validates :price, numericality: {greater_than_or_equal_to: 0}
+    validates :price, numericality: {greater_than_or_equal_to: 0, less_than: 50000}
     
     scope :latest, -> { limit(3).order(created_at: :desc) }
     scope :top_rated, -> { limit(3).order(average_rating: :desc, created_at: :desc) }
@@ -60,6 +60,11 @@ class Course < ApplicationRecord
             user_lessons.where(user: user).count/self.lessons_count.to_f*100
         end    
     end    
+    
+    def calculate_income
+        update_column :income, (enrollments.map(&:price).sum)
+        user.calculate_course_income
+    end
     
     def update_rating
         if enrollments.any? && enrollments.where.not(rating: nil).any?

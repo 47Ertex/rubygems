@@ -62,11 +62,13 @@
         .sticky-top
             = render 'courses/course', course: @course
         %p
-%h4 Simmilar Courses
-Current course tags
-= @course.tags.pluck(:id)
+%h4 
+    .fa.fa-graduation-cap
+    Simmilar Courses
+.badge.badge-info
+    = @course.tags.pluck(:name, :id)
 .row
-All course tags
+/All course tags
 - Course.all.where.not(id: @course.id).each do |course|
     .row
     - unless @course.tags.pluck(:id).intersection(course.tags.pluck(:id)).count.zero?

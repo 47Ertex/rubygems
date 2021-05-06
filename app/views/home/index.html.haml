@@ -64,17 +64,17 @@
     Lifetime access
     .row
     Learn on your schedule
-%p
-- if current_user.enrollments.any?
-  %h2
-    .fa.fa-user-graduate
-    Continue Learning
-  .card-columns
-    - @purchased_courses.each do |course|
-      = render 'courses/course', course: course
-  .text-right
-    = link_to 'All my purchased courses', purchased_courses_path, class: 'white_link'
-  %hr
+  %p
+/- if current_user.enrollment.any?
+/  %h2
+/    .fa.fa-user-graduate
+/    Continue Learning
+/  .card-columns
+/    - @purchased_courses.each do |course|
+/      = render 'courses/course', course: course
+/    .text-right
+/      = link_to 'All my purchased courses', purchased_courses_path, class: 'white_link'
+%hr
 %h2
   .fa.fa-tags
   Most popular tags
@@ -91,8 +91,8 @@
 .card-columns
   - @popular.each do |course|
     = render 'courses/course', course: course 
-.text-right
-  = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'white_link'    
+  .text-right
+    = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'white_link'    
 %hr
 %h2
   .fa.fa-star

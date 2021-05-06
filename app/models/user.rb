@@ -17,6 +17,10 @@ class User < ApplicationRecord
     UserMailer.new_user(self).deliver_later
   end
   
+  include PublicActivity::Model
+  tracked only: [:create, :destroy], owner: :itself
+  #tracked owner: Proc.new{|controller, model| controller.current_user} 
+  
   def self.from_omniauth(access_token)
     data = access_token.info
     user = User.where(email: data['email']).first
@@ -83,6 +87,16 @@ class User < ApplicationRecord
       user_lesson.first.increment!(:impressions)
     end  
   end
+  
+  def calculate_course_income
+    update_column :course_income, (courses.map(&:income).sum)
+    update_column :balance, (course_income - enrollment_expences)
+  end  
+  
+  def calculate_enrollment_expences
+    update_column :enrollment_expences, (enrollments.map(&:price).sum)
+    update_column :balance, (course_income - enrollment_expences)
+  end  
   
   private
   def must_have_a_role

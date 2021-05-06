@@ -54,7 +54,8 @@
         = link_to controller: controller_name, action: action_name, courses_search: {course_tags_tag_id_eq: tag.id} do
           .badge.badge-info
             = tag.name
-            = tag.course_tags_count
+            .badge.badge-secondary
+              = tag.course_tags_count
       
   .col-md-10
     .card-columns
