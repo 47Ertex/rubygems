@@ -4,5 +4,5 @@
       = f.simple_fields_for :lessons do |lesson|
         = render 'lesson_fields', f: lesson
       .links
-        = link_to_add_association 'add lesson', f, :lessons
-    = f.button :submit, "Save & Continue"
+        = link_to_add_association 'Добавить урок', f, :lessons
+    = f.button :submit, "Сохранить и Продолжить"

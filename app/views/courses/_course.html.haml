@@ -2,7 +2,7 @@
   .card-header
     .fa.fa-graduation-cap
     = link_to course.title, course_path(course), class: "black_link"
-    = course.income
+    /= course.income
   -if course.avatar.attached?  
     .card-img-top
       .text-center
@@ -55,14 +55,14 @@
   -if current_user        
     -if policy(course).owner?        
       .card-footer
-        = link_to 'Add lesson', new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary btn_link'
+        = link_to 'Добавить урок', new_course_lesson_path(course, @lesson), class: 'btn btn-sm btn-primary btn_link'
         = link_to course_course_wizard_index_path(course), class: 'btn btn-sm btn-warning mr-1 btn_link' do
           .fa.fa-edit
         -if policy(course).destroy?
-          =link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger btn_link'
+          =link_to 'Удалить', course, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger btn_link'
         = link_to analytics_course_path(course), class: 'btn btn-sm btn-info btn_link' do
           .fa.fa-chart-bar
-          Analytics
+          Аналитика
     - if policy(course).admin_or_owner?      
       .card-footer
         - if course.published?
@@ -76,9 +76,9 @@
     -if policy(course).approve?
       .card-footer
         - if course.approved?
-          = link_to 'unapprove', unapprove_course_path(course), method: :patch, class: "btn btn-sm btn-danger btn_link"
+          = link_to 'Неутвержден', unapprove_course_path(course), method: :patch, class: "btn btn-sm btn-danger btn_link"
         - else
-          = link_to 'approve', approve_course_path(course), method: :patch, class: "btn btn-sm btn-success btn_link"
+          = link_to 'Утвержден', approve_course_path(course), method: :patch, class: "btn btn-sm btn-success btn_link"
   .card-footer
     - course.tags.each do |tag|
       .badge.badge-info

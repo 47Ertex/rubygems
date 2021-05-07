@@ -1,38 +1,29 @@
 - content_for :title do
   Ertex47Project
   \|
-  Online Courses - Learn Anything, Bitch
+  Онлайн Курсы - Learn Anything, Bitch
 
 .jumbotron
   .display-4
-    Hello Word!!!
-  
-  .p-3
+    %h1 Hello World!!!
+  %p
   -if current_user
     =search_form_for @ransack_courses, as: :courses_search, url: courses_path do |f|
       .input-group
-        =f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 220px; ', placeholder: 'Find a course', autocomplete: 'off'
+        =f.search_field :title_cont, class: 'form-control-sm', style: 'float: left; width: 220px; ', placeholder: 'Найти курс', autocomplete: 'off'
         %span.input-group-append
           %button.btn.btn-primary.btn-sm{:type => "submit"}
             %span.fa.fa-search{"aria-hidden" => "true"}
-    %br  
             
   -else
-  %h3.text-shadow Join to access all the courses
   .p-2
-  = link_to 'Register', new_user_registration_path, class: 'btn btn-info btn-lg btn_link'
-  = link_to 'Login', new_user_session_path, class: 'btn btn-info btn-lg btn_link'
-  .row.mt-1
+  = link_to 'Регистрайция', new_user_registration_path, class: 'btn btn-info btn-lg btn_link'
+  = link_to 'Войти', new_user_session_path, class: 'btn btn-info btn-lg btn_link'
   = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link'do
-    Continue with
-    .fab.fa-google
-  .row.mt-1
+    .fab.fa-google.mt-1
   = link_to user_github_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
-    Continue with
-    .fab.fa-github 
-  .row.mt-1
+    .fab.fa-github.mt-1
   = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
-    Continue with
     .fab.fa-facebook
             
 .card-group
@@ -64,57 +55,58 @@
     Lifetime access
     .row
     Learn on your schedule
-  %p
-/- if current_user.enrollment.any?
+%hr
+/- if current_user.courses.any?
 /  %h2
 /    .fa.fa-user-graduate
 /    Continue Learning
 /  .card-columns
 /    - @purchased_courses.each do |course|
 /      = render 'courses/course', course: course
-/    .text-right
-/      = link_to 'All my purchased courses', purchased_courses_path, class: 'white_link'
-%hr
+/   .text-right
+/     = link_to 'All my purchased courses', purchased_courses_path, class: 'white_link'
+/%hr
 %h2
   .fa.fa-tags
-  Most popular tags
+  Популярные тэги
 - @popular_tags.each do |tag|
   = link_to courses_path(courses_search: {course_tags_tag_id_eq: tag.id}) do
     .badge.badge-info
-      %h4
+      %h5
         = tag.name
-        = tag.course_tags_count
+        .badge.badge-secondary
+          = tag.course_tags_count
 %hr        
 %h2
   .fa.fa-chart-line
-  Popular courses
+  Популярные курсы
 .card-columns
   - @popular.each do |course|
     = render 'courses/course', course: course 
-  .text-right
-    = link_to 'More popular courses', courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'white_link'    
+.text-right
+  = link_to 'Больше популярных курсов', courses_path(courses_search: {s: 'enrollments_count desc'}), class: 'white_link'    
 %hr
 %h2
   .fa.fa-star
-  Top rated courses
+  Лучшие курсы по рейтингу
 .card-columns
   - @top_rated.each do |course|
     = render 'courses/course', course: course 
 .text-right
-  = link_to 'Best rated courses', courses_path(courses_search: {s: 'average_rating desc'}), class: 'white_link'     
+  = link_to 'Курсы по рейтингу', courses_path(courses_search: {s: 'average_rating desc'}), class: 'white_link'     
 %hr
 %h2
   .far.fa-clock
-  Latest courses
+  Новые курсы
 .card-columns
   - @latest.each do |course|
     = render 'courses/course', course: course
 .text-right
-  = link_to 'More new courses', courses_path(courses_search: {s: 'created_at desc'}), class: 'white_link'  
+  = link_to 'Больше новых курсов', courses_path(courses_search: {s: 'created_at desc'}), class: 'white_link'  
 %hr
 %h2
   .far.fa-comment
-  What our students have to say
+  Что говорят наши студенты 
 .card-columns
   - @latest_goot_reviews.each do |enrollment|
     = render 'enrollments/enrollment', enrollment: enrollment

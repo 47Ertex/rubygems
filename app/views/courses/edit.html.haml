@@ -1,24 +1,24 @@
 - content_for :title do
   Ertex47Project
   \|
-  Editing course
+  Редактирование курса
   =@course.title
 
-= link_to 'Courses', courses_path
+= link_to 'Курсы', courses_path
 
 .fa.fa-graduation-cap
 = link_to course_path(@course) do
   = @course.title
 
 = link_to edit_course_path(@course) do
-  Edit
+  Редактирование
 
 .card
   .card-header
     %h3
       .fa.fa-graduation-cap
-      Editing course
+      Редактирование курса
   .card-body  
     = render 'form'
   .card-footer
-    = link_to 'Cancel', @course
+    = link_to 'Отмена', @course
