@@ -63,13 +63,13 @@ class CoursesController < ApplicationController
   def approve
     authorize @course, :approve?
     @course.update_attribute(:approved, true)
-    redirect_to @course, notice: "Course approved and visible!"
+    redirect_to @course, notice: "Курс утвержден и виден!!"
   end
   
   def unapprove
     authorize @course, :approve?
     @course.update_attribute(:approved, false)
-    redirect_to @course, notice: "Course unapproved and hidden!"  
+    redirect_to @course, notice: "Курс не утвержден и скрыт!"  
   end
   def new
     @course = Course.new
@@ -82,13 +82,13 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     authorize @course
-    @course.description='Curriculum Description'
-    @course.short_description='Marketing Description'
+    @course.description='Описание учебной программы'
+    @course.short_description='Маркетинговое описание'
     @course.user=current_user
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to course_course_wizard_index_path(@course), notice: "Course was successfully created." }
+        format.html { redirect_to course_course_wizard_index_path(@course), notice: "Курс успешно создан." }
         format.json { render :show, status: :created, location: @course }
       else
         @tags = Tag.all
@@ -103,11 +103,11 @@ class CoursesController < ApplicationController
     authorize @course
     if @course.destroy
       respond_to do |format|
-        format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
+        format.html { redirect_to courses_url, notice: "Курс удален." }
         format.json { head :no_content }
       end    
     else
-      redirect_to @course, alert: "Course has enrollments. Can not be destroyed"
+      redirect_to @course, alert: "У курса есть падаваны, его нельзя удалить."
     end  
   end
 

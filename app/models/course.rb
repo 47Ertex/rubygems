@@ -29,7 +29,7 @@ class Course < ApplicationRecord
     validates :avatar, presence: true, on: :update
     validates :avatar, 
         content_type: ['image/png', 'image/jpg', 'image/jpeg'], 
-        size: { less_than: 500.kilobytes , message: 'size should be under 500 kbs' }
+        size: { less_than: 500.kilobytes , message: 'размер до 500кб' }
     
     def to_s
         title
@@ -38,12 +38,12 @@ class Course < ApplicationRecord
     extend FriendlyId
     friendly_id :title, use: :slugged
     
-    LANGUAGES = [:'English', :'Polish', :'Russian', :'Spanish']
+    LANGUAGES = [:'Английский', :'Польский', :'Русский', :'Испанский']
     def self.languages
         LANGUAGES.map{|language|[language, language]}
     end
     
-        LEVELS = [:'Beginner', :'Intermediate', :'Advanced']
+    LEVELS = [:'Новичок', :'Средняк', :'Батя']
     def self.levels
         LEVELS.map{|level|[level, level]}
     end

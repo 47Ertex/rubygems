@@ -64,9 +64,9 @@
         %p
 %h4 
     .fa.fa-graduation-cap
-    Simmilar Courses
-.badge.badge-info
-    = @course.tags.pluck(:name, :id)
+    Похожие курсы
+/.badge.badge-info
+/    = @course.tags.pluck(:name, :id)
 .row
 /All course tags
 - Course.all.where.not(id: @course.id).each do |course|

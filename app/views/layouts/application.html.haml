@@ -18,10 +18,10 @@
     - if Rails.env.production? 
       = render 'layouts/google_analytics'
   %body
+  = render 'layouts/header'
   .container
-    = render 'layouts/header'
     = render 'layouts/messages'
     %p
     = yield
 
-  = render 'layouts/footer'
+    = render 'layouts/footer'

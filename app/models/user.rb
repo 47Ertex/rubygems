@@ -101,7 +101,7 @@ class User < ApplicationRecord
   private
   def must_have_a_role
     unless roles.any?
-      errors.add(:roles, "must have at least one role")
+      errors.add(:roles, "Необходимо указать хотя бы одну роль")
     end
   end
 
