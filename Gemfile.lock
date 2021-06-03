@@ -363,6 +363,7 @@ DEPENDENCIES
   friendly_id (~> 5.4.0)
   groupdate
   haml-rails (~> 2.0)
+  i18n
   image_processing
   jbuilder (~> 2.7)
   listen (~> 3.2)

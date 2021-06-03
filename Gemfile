@@ -78,3 +78,4 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'wicked' #multisteps forms
 gem "cocoon"
+gem 'i18n'

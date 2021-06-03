@@ -16,46 +16,46 @@
             %span.fa.fa-search{"aria-hidden" => "true"}
             
   -else
-  .p-2
-  = link_to 'Регистрайция', new_user_registration_path, class: 'btn btn-info btn-lg btn_link'
-  = link_to 'Войти', new_user_session_path, class: 'btn btn-info btn-lg btn_link'
-  = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link'do
-    .fab.fa-google.mt-1
-  = link_to user_github_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
-    .fab.fa-github.mt-1
-  = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
-    .fab.fa-facebook
+    .p-2
+    = link_to 'Регистрайция', new_user_registration_path, class: 'btn btn-info btn-lg btn_link'
+    = link_to 'Войти', new_user_session_path, class: 'btn btn-info btn-lg btn_link'
+    = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link'do
+      .fab.fa-google.mt-1
+    = link_to user_github_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
+      .fab.fa-github.mt-1
+    = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-lg mr-1 btn_link' do
+      .fab.fa-facebook
             
-.card-group
-  .card.card-body
-    %h2
-      .fa.fa-graduation-cap
-    = Course.count
-    online courses
-    .row
-    Explore a variety of fresh topics
-  .card.card-body
-    %h2
-      .fa.fa-chalkboard-teacher
-      /.fa.fa-brain
-    = Course.distinct.count(:user_id)
-    expert instructors
-    .row
-    Find the right instructor for you
-  .card.card-body
-    %h2
-      .fa.fa-user-graduate
-    = User.count
-    active learners
-    .row
-    Join the knowledge sharing community
-  .card.card-body
-    %h2
-      .fa.fa-infinity
-    Lifetime access
-    .row
-    Learn on your schedule
-%hr
+/.card-group
+/  .card.card-body
+/    %h2
+/      .fa.fa-graduation-cap
+/    = Course.count
+/    online courses
+/    .row
+/    Explore a variety of fresh topics
+/  .card.card-body
+/    %h2
+/      .fa.fa-chalkboard-teacher
+/      /.fa.fa-brain
+/    = Course.distinct.count(:user_id)
+/    expert instructors
+/    .row
+/    Find the right instructor for you
+/  .card.card-body
+/    %h2
+/      .fa.fa-user-graduate
+/    = User.count
+/    active learners
+/    .row
+/    Join the knowledge sharing community
+/  .card.card-body
+/    %h2
+/      .fa.fa-infinity
+/    Lifetime access
+/    .row
+/    Learn on your schedule
+/%hr
 /- if current_user.courses.any?
 /  %h2
 /    .fa.fa-user-graduate
