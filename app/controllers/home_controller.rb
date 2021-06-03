@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     if current_user.has_role?(:admin)
       @pagy, @activities = pagy(PublicActivity::Activity.all.order(created_at: :desc))
     else
-      redirect_to root_path, alert: "You are not authorized to access this page" 
+      redirect_to root_path, alert: "Вы не авторизированы ждля доступа к этой станице" 
     end   
   end
 
@@ -26,7 +26,7 @@ class HomeController < ApplicationController
       #@enrollments=Enrollment.all
       #@courses=Course.all
     else
-      redirect_to root_path, alert: "You are not authorized to access this page" 
+      redirect_to root_path, alert: "Вы не авторизированы ждля доступа к этой станице" 
     end  
   end  
 

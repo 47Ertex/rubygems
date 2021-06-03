@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to course_lesson_path(@course, @lesson), notice: "Comment was successfully created." }
+        format.html { redirect_to course_lesson_path(@course, @lesson), notice: "Комментарий успешно создан." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render 'lessons/comments/new' }
@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     authorize @comment
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to course_lesson_path(@course, @lesson), notice: "Comment was successfully destroyed." }
+      format.html { redirect_to course_lesson_path(@course, @lesson), notice: "Комментарий удален." }
       format.json { head :no_content }
     end
   end

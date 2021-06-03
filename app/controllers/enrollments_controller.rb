@@ -49,7 +49,7 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments or /enrollments.json
   def create
     @enrollment=current_user.buy_course(@course)
-    redirect_to course_path(@course), notice: "You are enrolled!!!!"
+    redirect_to course_path(@course), notice: "Вы стали падаваном"
     #EnrollmentMailer.student_enrollment(@enrollment).deliver_later
     #EnrollmentMailer.teacher_enrollment(@enrollment).deliver_later
     #if @course.price > 0
